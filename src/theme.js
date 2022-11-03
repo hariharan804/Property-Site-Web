@@ -1,6 +1,18 @@
 import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
+  // components: {
+  //   MuiFilledInput: {
+  //     styleOverrides: {
+  //       root: {
+  //         backgroundColor: "green"
+  //       },
+  //       focused: {
+  //         backgroundColor: "yellow"
+  //       }
+  //     }
+  //   }
+  // },
   palette: {
     primary: {
       main: "#2C3060",
@@ -14,6 +26,7 @@ export const theme = createTheme({
     },
     background: {
       white: "#FFFFFF",
+      darkBg:"#1C1C1C",
       grayTransprent: "#00001F",
       grayTransprent2: "#000014",
       gray: "#98A0AC",

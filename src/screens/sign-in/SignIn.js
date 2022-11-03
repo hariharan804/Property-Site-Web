@@ -1,13 +1,19 @@
 // import { useTheme } from "@mui/styles";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { useStyles } from "./SignIn-Styels";
 import dotedImg from "../../assets/images/doted.svg";
 import circleImg from "../../assets/images/circle.svg";
 import circleDarkImg from "../../assets/images/circleDark.svg";
 import InputBox from "../../components/inputBox/InputBox";
+import eye from "../../assets/images/eye-hide.svg";
+import { useNavigate } from "react-router-dom";
+
 export const SignIn = (props) => {
   const classes = useStyles(props);
-
+const navigate = useNavigate();
+  const onLoginBtn = ()=>{
+navigate('/dashboard');
+  }
   return (
     <>
       <section className={classes.container}>
@@ -82,7 +88,24 @@ export const SignIn = (props) => {
                 </div>
                 <div className={classes.signInCard}>
                   <h1 className={classes.signTitle}>Sign In</h1>
-                  <InputBox/>
+                  <div className={classes.inputBar}>
+                    <InputBox
+                      type="text"
+                      label="Mobile Number / Email ID"
+                      placeholder="Enter Mobile Number / Email ID"
+                    />
+                  </div>{" "}
+                  <div className={classes.inputBar}>
+                    <InputBox
+                      type="password"
+                      label="Enter Password"
+                      placeholder="Enter your password"
+                      endAdornment={<img src={eye} alt={"eye"}/>}
+                    />
+                  </div>
+                  <h5 className={classes.forgetPassword}>Did you forget your password? <span>Click Here</span></h5>
+               <div className={classes.poweredBy}><span>Powered by</span> <img src={require("../../assets/images/logo.png")} alt="logo" /> Property Automate</div>
+               <Button onClick={onLoginBtn} className={classes.loginBtn}  fullWidth={true} variant="contained">Log In</Button>
                 </div>
                 <div className={classes.circleImgGroup}>
                   <img
