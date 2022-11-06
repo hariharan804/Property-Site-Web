@@ -1,11 +1,4 @@
-import {
-  Avatar,
-  Divider,
-  Grid,
-  Menu,
-  MenuItem,
-  Typography,
-} from "@mui/material";
+import { Avatar, Divider, Grid, Menu, Typography } from "@mui/material";
 import { useStyles } from "./Header-Styles";
 import bellIcon from "../../assets/images/bell-icon.svg";
 import { useState } from "react";
@@ -99,7 +92,10 @@ export const Header = () => {
               </Grid>
               <Grid
                 item
-                sx={{ paddingTop: 0 }}
+                sx={{
+                  paddingTop: 0,
+                  display: { xs: "none", sm:"block", md: "block", lg: "block" },
+                }}
                 xs={"auto"}
                 className={classes.imageSection}
                 onClick={handleClick}
@@ -135,9 +131,6 @@ export const Header = () => {
           }}
         >
           <h1>adshh</h1>
-          {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem> */}
         </Menu>
       </header>
     </>
