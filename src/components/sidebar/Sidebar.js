@@ -15,7 +15,7 @@ import { Collapse, Typography } from "@mui/material";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import Leads from "../../assets/images/Leads.svg";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
- 
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 271;
 
@@ -68,7 +68,7 @@ const Drawer = styled(MuiDrawer, {
 
 export const Sidebar = (props) => {
   const classes = useStyles();
-
+  const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -122,7 +122,14 @@ export const Sidebar = (props) => {
           </DrawerHeader>
           <Divider />
           <List>
-            <ListItem key={"Inbox"} disablePadding sx={{ display: "block" }}>
+            <ListItem
+              onClick={() => {
+                navigate("/user/dashboard");
+              }}
+              key={"Inbox"}
+              disablePadding
+              sx={{ display: "block" }}
+            >
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -151,7 +158,13 @@ export const Sidebar = (props) => {
             </ListItem>
             <ListItem key={"Inbox2"} disablePadding sx={{ display: "block" }}>
               <ListItemButton
-                onClick={open ? handleClickCollapse : null}
+                onClick={
+                  open
+                    ? handleClickCollapse
+                    : () => {
+                        navigate("/user/companies");
+                      }
+                }
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
@@ -184,7 +197,12 @@ export const Sidebar = (props) => {
                   <ListItemIcon>
                     <img src={Leads} alt="company" />
                   </ListItemIcon>
-                  <ListItemText primary="Menu 1" />
+                  <ListItemText
+                    onClick={() => {
+                      navigate("/user/companies");
+                    }}
+                    primary="Menu 1"
+                  />
                   {open ? <ExpandMore /> : ""}
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>

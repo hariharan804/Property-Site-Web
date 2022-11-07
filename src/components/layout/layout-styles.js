@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.sidebarBg,
   },
   mainContent: {
-    padding: "8px",
+    // padding: "8px",
     width: "100%",
     height: "100%",
     marginTop:"56px"

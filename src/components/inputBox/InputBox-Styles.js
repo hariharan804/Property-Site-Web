@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     font: "normal normal 600 16px/19px NunitoSans-SemiBold !important",
     border: "1px solid #E4E8EE",
     borderRadius: "10px",
-    padding: "3px 10px",
+    padding: "3px 6px",
     color: theme.palette.secondary.light+' !important',
   },
 

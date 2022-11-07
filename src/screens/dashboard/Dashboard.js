@@ -1,5 +1,4 @@
-
-import { 
+import {
   Card,
   Divider,
   Grid,
@@ -9,10 +8,12 @@ import {
   TableBody,
   TableCell,
   TableContainer,
+  TableHead,
   TableRow,
   Tabs,
   Typography,
 } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import ChartCard from "../../components/chartCard/ChartCard";
 import pencil from "../../assets/images/pencil.svg";
 import eye from "../../assets/images/eye.svg";
@@ -21,6 +22,7 @@ import { Stack } from "@mui/system";
 import { useState } from "react";
 import TabPanel from "../../components/tabPanel/TabPanel";
 import { useStyles } from "./Dashboard-Styles";
+import InputBox from "../../components/inputBox/InputBox";
 
 export const chartDetails = [
   {
@@ -90,6 +92,15 @@ export const chartDetails = [
 function createData(name, type, date, id) {
   return { name, type, date, id };
 }
+function createTd(
+  propertyId,
+  propertyName,
+  totelUnit,
+  occupeidUnit,
+  occupancy
+) {
+  return { propertyId, propertyName, totelUnit, occupeidUnit, occupancy };
+}
 
 const rows = [
   createData("Water Leakage Repair", "Maintenance", "22 jan 22", "K-F01-U277"),
@@ -113,6 +124,19 @@ const rows = [
     "22 jan 22",
     "K-F01-U277"
   ),
+];
+
+const table = [
+  createTd("Prop 011", "Tyons", "22", "02", "47%"),
+  createTd("Prop 012", "Rubix", "52", "14", "27%"),
+  createTd("Prop 013", "Phonix", "46", "34", "54%"),
+  createTd("Prop 014", "Thapar", "27", "76", "65%"),
+  createTd("Prop 015", "Marian", "29", "33", "23%"),
+  createTd("Prop 016", "Tyons", "43", "34", "34%"),
+  createTd("Prop 017", "Tyons", "87", "56", "21%"),
+  createTd("Prop 011", "Tyons", "22", "02", "47%"),
+  createTd("Prop 012", "Rubix", "52", "14", "27%"),
+  createTd("Prop 013", "Phonix", "46", "34", "54%"),
 ];
 
 export const Dashboard = (props) => {
@@ -161,7 +185,6 @@ export const Dashboard = (props) => {
     },
   ];
 
- 
   const [toggleValue, setToggleValue] = useState(0);
   const handleChange = (event, newValue) => {
     setToggleValue(newValue);
@@ -240,96 +263,148 @@ export const Dashboard = (props) => {
                   <Tab label="General Requests" />
                   <Tab label="Maintenance" />
                 </Tabs>
-                <Divider/>
-                <Grid sx={{marginTop:"0px"}} container spacing={2}>
-          <Grid item xs={10}>
-            <ListItem sx={{ padding: "5px" }}>
-              <Typography variant="h6">{toggleValue === 0 ? "General Requests (12)" : "Maintenance (15)"}</Typography>
-            </ListItem>
-          </Grid>
-          <Grid item xs={2}>
-            <ListItem sx={{ padding: "5px", justifyContent: "flex-end" }}>
-              <Typography variant="subTitel1"  color="primary.light">View All</Typography>
-            </ListItem>
-          </Grid>
-        </Grid>
-                <TabPanel sx={{padding:"10px 5px"}} value={toggleValue} index={0}>
-                <TableContainer className={classes.tableContainer}>
-                  <Table sx={{ minWidth: 350 }} aria-label="simple table">
-                    <TableBody>
-                      {rows.map((row) => (
-                        <TableRow
-                          key={row.name}
-                          sx={{
-                            " td, th": { border: 0, padding:"8px" },
-                          }}
-                        >
-                          <TableCell component="th" scope="row">
-                            <Typography variant="h6" color="#091B29">
-                              {row.name}
-                            </Typography>
-                            <Typography color="#98A0AC">
-                            General Requests &#8226; {row.date} &#8226; {row.id}
-                            </Typography>
-                          </TableCell>
-                          <TableCell sx={{ width: "40px" }} align="right">
-                            <img src={pencil} alt="pencil" />
-                          </TableCell>
-                          <TableCell sx={{ width: "40px" }} align="right">
-                            <img src={eye} alt="pencil" />
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
+                <Divider />
+                <Grid sx={{ marginTop: "0px" }} container spacing={2}>
+                  <Grid item xs={10}>
+                    <ListItem sx={{ padding: "5px" }}>
+                      <Typography variant="h6">
+                        {toggleValue === 0
+                          ? "General Requests (12)"
+                          : "Maintenance (15)"}
+                      </Typography>
+                    </ListItem>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <ListItem
+                      sx={{ padding: "5px", justifyContent: "flex-end" }}
+                    >
+                      <Typography variant="subTitel1" color="primary.light">
+                        View All
+                      </Typography>
+                    </ListItem>
+                  </Grid>
+                </Grid>
+                <InputBox
+                  type="text"
+                  placeholder={
+                    toggleValue === 0
+                      ? "Request ID, Request Name, Categoty"
+                      : "Maintenance ID, Maintenance Name, Categoty"
+                  }
+                  startAdornment={<SearchIcon sx={{ color: "#98A0AC" }} />}
+                />
+                <TabPanel
+                  sx={{ padding: "10px 5px" }}
+                  value={toggleValue}
+                  index={0}
+                >
+                  <TableContainer className={classes.tableContainer}>
+                    <Table sx={{ minWidth: 320 }} aria-label="simple table">
+                      <TableBody>
+                        {rows.map((row,index) => (
+                          <TableRow
+                            key={`${index+"req"}`}
+                            sx={{
+                              " td, th": { border: 0, padding: "6px" },
+                            }}
+                          >
+                            <TableCell component="th" scope="row">
+                              <Typography variant="h6" color="#091B29">
+                                {row.name}
+                              </Typography>
+                              <Typography color="#98A0AC">
+                                General Requests &#8226; {row.date} &#8226;{" "}
+                                {row.id}
+                              </Typography>
+                            </TableCell>
+                            <TableCell sx={{ width: "40px" }} align="right">
+                              <img src={pencil} alt="pencil" />
+                            </TableCell>
+                            <TableCell sx={{ width: "40px" }} align="right">
+                              <img src={eye} alt="pencil" />
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
                 </TabPanel>
                 <TabPanel value={toggleValue} index={1}>
-                <TableContainer className={classes.tableContainer}>
-                  <Table sx={{ minWidth: 350 }} aria-label="simple table">
-                    {/* <TableHead>
+                  <TableContainer className={classes.tableContainer}>
+                    <Table sx={{ minWidth: 320 }} aria-label="simple table">
+                      <TableBody>
+                        {rows.map((row,index) => (
+                          <TableRow
+                            key={`${index+"Maintenance"}`}
+                            sx={{
+                              " td, th": { border: 0, padding: "6px" },
+                            }}
+                          >
+                            <TableCell component="th" scope="row">
+                              <Typography variant="h6" color="#091B29">
+                                {row.name}
+                              </Typography>
+                              <Typography color="#98A0AC">
+                                {row.type} &#8226; {row.date} &#8226; {row.id}
+                              </Typography>
+                            </TableCell>
+                            <TableCell sx={{ width: "40px" }} align="right">
+                              <img src={pencil} alt="pencil" />
+                            </TableCell>
+                            <TableCell sx={{ width: "40px" }} align="right">
+                              <img src={eye} alt="pencil" />
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </TabPanel>
+              </Card>
+            </Grid>
+            <Grid item xs={10} md={12} lg={6}>
+              <Card className={classes.cards} variant="outlined">
+                <Typography variant="h6" sx={{ marginBottom: "12px" }}>
+                  Occupancy By Property
+                </Typography>
+                <TableContainer className={classes.tableContainer2}>
+                  <Table sx={{ minWidth: 320 }} aria-label="simple table">
+                    <TableHead className={classes.tableHeader}>
                       <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
-                        <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                        <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                        <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                        <TableCell>Property ID</TableCell>
+                        <TableCell align="right">Property Name</TableCell>
+                        <TableCell align="right">Total Unit</TableCell>
+                        <TableCell align="right">Occupeid Unit</TableCell>
+                        <TableCell align="right">Occupancy&nbsp;%</TableCell>
                       </TableRow>
-                    </TableHead> */}
+                    </TableHead>
                     <TableBody>
-                      {rows.map((row) => (
+                      {table.map((row, index) => (
                         <TableRow
-                          key={row.name}
-                          sx={{
-                            " td, th": { border: 0 },
-                          }}
+                          className={classes.tableRow}
+                          key={index}
                         >
-                          <TableCell component="th" scope="row">
-                            <Typography variant="h6" color="#091B29">
-                              {row.name}
-                            </Typography>
-                            <Typography color="#98A0AC">
-                              {row.type} &#8226; {row.date} &#8226; {row.id}
-                            </Typography>
+                          <TableCell scope="row">
+                            <Typography>{row.propertyId}</Typography>
                           </TableCell>
-                          <TableCell sx={{ width: "40px" }} align="right">
-                            <img src={pencil} alt="pencil" />
+                          <TableCell align="right">
+                            <Typography>{row.propertyName}</Typography>
                           </TableCell>
-                          <TableCell sx={{ width: "40px" }} align="right">
-                            <img src={eye} alt="pencil" />
+                          <TableCell align="right">
+                            <Typography>{row.totelUnit}</Typography>
+                          </TableCell>
+                          <TableCell align="right">
+                            <Typography>{row.occupeidUnit}</Typography>
+                          </TableCell>
+                          <TableCell align="right">
+                            <Typography>{row.occupancy}</Typography>
                           </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
                   </Table>
                 </TableContainer>
-                </TabPanel>
-
-                
               </Card>
-            </Grid>
-            <Grid item xs={12} md={12} lg={6}>
-              s
             </Grid>
           </Grid>
         </div>

@@ -6,7 +6,7 @@ export const InputBox = (props) => {
   const classes = useStyles(props);
   const theme = useTheme();
 
-  const {type,label, placeholder, endAdornment } = props;
+  const {type,label, placeholder, endAdornment, startAdornment } = props;
 
   const inputOnFocused = {
     "& .Mui-focused": {
@@ -32,6 +32,7 @@ export const InputBox = (props) => {
         InputProps={{
           disableUnderline: true,
           className: classes.input,
+          startAdornment:<InputAdornment position="start">{startAdornment}</InputAdornment>,
           endAdornment:<InputAdornment position="end">{endAdornment}</InputAdornment>
         }}
         variant="standard"

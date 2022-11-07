@@ -12,7 +12,7 @@ export const SignIn = (props) => {
   const classes = useStyles(props);
 const navigate = useNavigate();
   const onLoginBtn = ()=>{
-navigate('/dashboard');
+navigate('/user/dashboard');
   }
   return (
     <>
