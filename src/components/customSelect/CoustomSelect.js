@@ -2,7 +2,6 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
-  NativeSelect,
   Select,
 } from "@mui/material";
 import { useTheme } from "@mui/styles";
@@ -12,12 +11,20 @@ import { useStyles } from "./CustomSelect-Styles";
 export const CustomSelect = (props) => {
   const classes = useStyles(props);
   const theme = useTheme();
-
-  const { type, label, placeholder, endAdornment, startAdornment } = props;
-  const [age, setAge] = useState("");
+  const inputOnFocused = {
+    "& .Mui-focused": {
+        color: theme.palette.secondary.dark+' !important',
+    },
+    "& .Mui-focused.MuiInput-root": {
+        border: '1px solid #5078E1',
+    },
+   
+}
+  const { label, defaultValue, options } = props;
+  const [selectedValue, setSelectedValue] = useState(defaultValue);
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setSelectedValue(event.target.value);
   };
 
   return (
@@ -27,13 +34,14 @@ export const CustomSelect = (props) => {
         variant="standard"
         htmlFor="uncontrolled-native"
       >
-        Agedd
+        {label}
       </InputLabel>
-      <FormControl fullWidth>
-        <Select className={classes.select} value={age} onChange={handleChange}>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+      <FormControl fullWidth={true}>
+        <Select sx={inputOnFocused} className={classes.select} value={selectedValue} onChange={handleChange}>
+        <MenuItem value={""}>None</MenuItem>
+        {options && options.map((option, index)=>(
+          <MenuItem key={index} value={option.value}>{option.key}</MenuItem>
+       ))}
         </Select>
       </FormControl>
     </div>

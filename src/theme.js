@@ -40,6 +40,12 @@ export const theme = createTheme({
     "0px 1px 2px rgba(9, 30, 66, 0.2)",
     "0px 1px 3px rgba(9, 30, 66, 0.12)",
     "0px 2px 4px rgba(9, 30, 66, 0.08)",
+    "0px 1px 2px rgba(9, 30, 66, 0.2)",
+    "0px 1px 3px rgba(9, 30, 66, 0.12)",
+    "0px 2px 4px rgba(9, 30, 66, 0.08)",
+    "0px 1px 2px rgba(9, 30, 66, 0.2)",
+    "0px 1px 3px rgba(9, 30, 66, 0.12)",
+    "0px 2px 4px rgba(9, 30, 66, 0.08)",
   ],
   shape: {
     borderRadius: 6,

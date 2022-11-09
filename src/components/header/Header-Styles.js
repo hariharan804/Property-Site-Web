@@ -2,13 +2,13 @@ import makeStyles from "@mui/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-     position: "fixed",
+    position: "fixed",
     height: "54px",
-    width:"100vw",
+    width: "100vw",
     backgroundColor: theme.palette.background.darkBg,
     padding: "10px 18px",
     boxSizing: "Border-Box",
-    zIndex:"1000",
+    zIndex: "1000",
   },
   logImg: {
     width: "116px",
@@ -40,10 +40,53 @@ const useStyles = makeStyles((theme) => ({
   },
   dropDown: {
     margin: 0,
-    marginLeft:"7px",
+    marginLeft: "7px",
     color: theme.palette.background.white,
     fontSize: "12px",
     transform: "rotate(90deg)",
+  },
+  profileInfo: {
+    minWidth: "350px",
+    maxWidth: "420px",
+  },
+  roleViewer: {
+    backgroundColor: "#FEEAEA",
+    color: "#F17360 !important",
+    padding: "1px 8px",
+    borderRadius: "4px",
+    width:"100px",
+    margin:"6px 0 !important"
+  },
+  roleBox:{
+    padding:"12px",
+    width:"100%",
+  },
+  roleCard:{
+    margin :"10px 0",
+    padding:"8px",
+    width:"102px",
+    height:"102px",
+  },
+  saveBtn: {
+    "& .MuiButton-root": {
+      backgroundColor: "#fff",
+      borderRadius: "8px",
+      padding: "8px",
+      margin: "10px 10px",
+      color: "#FF4B4B",
+      borderColor:"#FF4B4B"
+    },
+    "& .MuiButton-outlined": {
+      backgroundColor: "#FFF",
+      textTransform: "capitalize",
+      color: "#FF4B4B",
+      font: "normal normal bold 14px/19px NunitoSans-Bold",
+    },
+    "& .MuiButton-root:hover": {
+      // backgroundColor:"inherit",
+      opacity: "0.90", borderColor:"#FF4B4B"
+    },
+   
   },
 }));
 

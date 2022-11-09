@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   label: {
-    font: "normal normal 600 13px/16px NunitoSans-Regular !important",
+    font: "normal normal 600 14px/16px NunitoSans-Regular !important",
     letterSpacing:"0.05rem",
     color: theme.palette.background.gray + " !important",
   },

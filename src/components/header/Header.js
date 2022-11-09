@@ -1,25 +1,67 @@
-import { Avatar, Divider, Grid, Menu, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Menu,
+  Typography,
+} from "@mui/material";
 import { useStyles } from "./Header-Styles";
 import bellIcon from "../../assets/images/bell-icon.svg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export const Header = () => {
   const classes = useStyles();
-
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState(false);
+  const open = anchorEl;
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorEl(false);
   };
+
+  const roleDetails = [
+    {
+      role: "Super Admin",
+      color: "#F17360",
+    },
+    {
+      role: "Community Manager",
+      color: "#119DA4",
+    },
+    {
+      role: "Security Manager",
+      color: "#D49200",
+    },
+    {
+      role: "Property Manager",
+      color: "#4991F2",
+    },
+    {
+      role: "Zonal Manager",
+      color: "#11A442",
+    },
+    {
+      role: "Customer Care",
+      color: "#D471ff",
+    },
+  ];
 
   return (
     <>
       <header className={classes.root}>
         <Grid
           container
-          sx={{ marginTop: 0, paddingTop: 0 }}
+          sx={{ marginTop: 0, paddingTop: 0, width:"100%" }}
           direction="row"
           justifyContent="space-between"
           alignItems="center"
@@ -94,7 +136,12 @@ export const Header = () => {
                 item
                 sx={{
                   paddingTop: 0,
-                  display: { xs: "none", sm:"block", md: "block", lg: "block" },
+                  display: {
+                    xs: "none",
+                    sm: "block",
+                    md: "block",
+                    lg: "block",
+                  },
                 }}
                 xs={"auto"}
                 className={classes.imageSection}
@@ -130,7 +177,115 @@ export const Header = () => {
             horizontal: "left",
           }}
         >
-          <h1>adshh</h1>
+          <Box className={classes.profileInfo}>
+            <List
+              sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            >
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar sx={{ width: 62, height: 62, marginRight: "10px" }}>
+                    <img
+                      src={require("../../assets/images/profile2.png")}
+                      alt="profile"
+                    />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary="Hariharan"
+                  secondary={
+                    <>
+                      {"hari@gmail.com "}
+                      <Typography
+                        sx={{ display: "block" }}
+                        className={classes.roleViewer}
+                        component="span"
+                        variant="body2"
+                      >
+                        Super Admin
+                      </Typography>
+                    </>
+                  }
+                />
+              </ListItem>
+            </List>
+            <Divider />
+            <Box className={classes.roleBox}>
+              <Typography
+                variant="h6"
+                sx={{ fontSize: "12px" }}
+                color={"#98A0AC"}
+              >
+                ROLES
+              </Typography>
+              <Grid container spacing={1} >
+                {roleDetails.map((roles, index) => (
+                  <Grid key={index} item xs={"auto"}  lg={"auto"}>
+                    <Card
+                      className={classes.roleCard}
+                      sx={{ border: "1px sold #f6e !important" }}
+                      variant="outlined"
+                    >
+                      <Box
+                        key={index}
+                        sx={{
+                          display: "flex !important",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Avatar
+                          sx={{
+                            dispalay: "inline-block",
+                            align: "center",
+                            bgcolor: roles.color + "2f",
+                            color: roles.color,
+                          }}
+                        >
+                          {roles.role.charAt(0)}
+                        </Avatar>
+                        <Typography sx={{ marginTop: "6px" }} align="center">
+                          {roles.role}
+                        </Typography>
+                      </Box>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+            <Divider />
+            <Box className={classes.roleBox}>
+              <Typography
+                variant="h6"
+                sx={{ fontSize: "14px", marginTop: "8px" }}
+                color={"#4E5A6B"}
+              >
+                My Profile
+              </Typography>
+              <Typography
+                variant="h6"
+                sx={{ fontSize: "14px", marginTop: "8px" }}
+                color={"#4E5A6B"}
+              >
+                Privacy Policy
+              </Typography>
+              <Typography
+                variant="h6"
+                sx={{ fontSize: "14px", marginTop: "8px" }}
+                color={"#4E5A6B"}
+              >
+                Terms and conditions
+              </Typography>
+              <Box className={classes.saveBtn}>
+                <Button
+                  onClick={() => navigate("/")}
+                  variant="outlined"
+                >
+                  Sign Out
+                </Button>
+              </Box>
+            </Box>
+          </Box>
         </Menu>
       </header>
     </>

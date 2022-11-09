@@ -3,6 +3,8 @@ import {
   Divider,
   Grid,
   ListItem,
+  SpeedDial,
+  SpeedDialIcon,
   Tab,
   Table,
   TableBody,
@@ -23,6 +25,7 @@ import { useState } from "react";
 import TabPanel from "../../components/tabPanel/TabPanel";
 import { useStyles } from "./Dashboard-Styles";
 import InputBox from "../../components/inputBox/InputBox";
+import { useNavigate } from "react-router-dom";
 
 export const chartDetails = [
   {
@@ -141,7 +144,7 @@ const table = [
 
 export const Dashboard = (props) => {
   const classes = useStyles(props);
-
+  const navigate = useNavigate();
   const propertyDetails = [
     {
       propertyName: "Active Properties",
@@ -265,7 +268,7 @@ export const Dashboard = (props) => {
                 </Tabs>
                 <Divider />
                 <Grid sx={{ marginTop: "0px" }} container spacing={2}>
-                  <Grid item xs={10}>
+                  <Grid item xs={8}>
                     <ListItem sx={{ padding: "5px" }}>
                       <Typography variant="h6">
                         {toggleValue === 0
@@ -274,7 +277,7 @@ export const Dashboard = (props) => {
                       </Typography>
                     </ListItem>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={4}>
                     <ListItem
                       sx={{ padding: "5px", justifyContent: "flex-end" }}
                     >
@@ -301,9 +304,9 @@ export const Dashboard = (props) => {
                   <TableContainer className={classes.tableContainer}>
                     <Table sx={{ minWidth: 320 }} aria-label="simple table">
                       <TableBody>
-                        {rows.map((row,index) => (
+                        {rows.map((row, index) => (
                           <TableRow
-                            key={`${index+"req"}`}
+                            key={`${index + "req"}`}
                             sx={{
                               " td, th": { border: 0, padding: "6px" },
                             }}
@@ -317,10 +320,10 @@ export const Dashboard = (props) => {
                                 {row.id}
                               </Typography>
                             </TableCell>
-                            <TableCell sx={{ width: "40px" }} align="right">
+                            <TableCell sx={{ width: "40px" }} >
                               <img src={pencil} alt="pencil" />
                             </TableCell>
-                            <TableCell sx={{ width: "40px" }} align="right">
+                            <TableCell sx={{ width: "40px" }} >
                               <img src={eye} alt="pencil" />
                             </TableCell>
                           </TableRow>
@@ -333,9 +336,9 @@ export const Dashboard = (props) => {
                   <TableContainer className={classes.tableContainer}>
                     <Table sx={{ minWidth: 320 }} aria-label="simple table">
                       <TableBody>
-                        {rows.map((row,index) => (
+                        {rows.map((row, index) => (
                           <TableRow
-                            key={`${index+"Maintenance"}`}
+                            key={`${index + "Maintenance"}`}
                             sx={{
                               " td, th": { border: 0, padding: "6px" },
                             }}
@@ -348,10 +351,10 @@ export const Dashboard = (props) => {
                                 {row.type} &#8226; {row.date} &#8226; {row.id}
                               </Typography>
                             </TableCell>
-                            <TableCell sx={{ width: "40px" }} align="right">
+                            <TableCell sx={{ width: "40px" }} >
                               <img src={pencil} alt="pencil" />
                             </TableCell>
-                            <TableCell sx={{ width: "40px" }} align="right">
+                            <TableCell sx={{ width: "40px" }} >
                               <img src={eye} alt="pencil" />
                             </TableCell>
                           </TableRow>
@@ -372,31 +375,28 @@ export const Dashboard = (props) => {
                     <TableHead className={classes.tableHeader}>
                       <TableRow>
                         <TableCell>Property ID</TableCell>
-                        <TableCell align="right">Property Name</TableCell>
-                        <TableCell align="right">Total Unit</TableCell>
-                        <TableCell align="right">Occupeid Unit</TableCell>
-                        <TableCell align="right">Occupancy&nbsp;%</TableCell>
+                        <TableCell >Property Name</TableCell>
+                        <TableCell >Total Unit</TableCell>
+                        <TableCell >Occupeid Unit</TableCell>
+                        <TableCell >Occupancy&nbsp;%</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {table.map((row, index) => (
-                        <TableRow
-                          className={classes.tableRow}
-                          key={index}
-                        >
+                        <TableRow className={classes.tableRow} key={index}>
                           <TableCell scope="row">
                             <Typography>{row.propertyId}</Typography>
                           </TableCell>
-                          <TableCell align="right">
+                          <TableCell >
                             <Typography>{row.propertyName}</Typography>
                           </TableCell>
-                          <TableCell align="right">
+                          <TableCell >
                             <Typography>{row.totelUnit}</Typography>
                           </TableCell>
-                          <TableCell align="right">
+                          <TableCell >
                             <Typography>{row.occupeidUnit}</Typography>
                           </TableCell>
-                          <TableCell align="right">
+                          <TableCell >
                             <Typography>{row.occupancy}</Typography>
                           </TableCell>
                         </TableRow>
@@ -409,6 +409,18 @@ export const Dashboard = (props) => {
           </Grid>
         </div>
       </div>
+      <SpeedDial
+        className={classes.speedDial}
+        ariaLabel="SpeedDial"
+        onClick={() => navigate("/user/companies")}
+        sx={{
+          "& .MuiButtonBase-root": { backgroundColor: "#5078E1" },
+          position: "absolute",
+          bottom: 16,
+          right: 16,
+        }}
+        icon={<SpeedDialIcon />}
+      ></SpeedDial>
     </>
   );
 };

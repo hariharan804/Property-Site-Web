@@ -16,6 +16,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import Leads from "../../assets/images/Leads.svg";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { useNavigate } from "react-router-dom";
+import HomeWorkIcon from '@mui/icons-material/HomeWork';
 
 const drawerWidth = 271;
 
@@ -201,7 +202,7 @@ export const Sidebar = (props) => {
                     onClick={() => {
                       navigate("/user/companies");
                     }}
-                    primary="Menu 1"
+                    primary="Add Property"
                   />
                   {open ? <ExpandMore /> : ""}
                 </ListItemButton>
@@ -241,6 +242,39 @@ export const Sidebar = (props) => {
                 </Collapse>
               </List>
             </Collapse>
+            <ListItem
+              onClick={() => {
+                navigate("/user/properties");
+              }}
+              disablePadding
+              sx={{ display: "block" }}
+            >
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.0,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    padding: "7px",
+                    borderRadius: "50%",
+                    color: "#fff",
+                    bgcolor: theme.palette.primary.light,
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  <HomeWorkIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={"Properties"}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </ListItem>
           </List>
           <Divider />
         </Drawer>

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto !important",
   },
   tableContainer2: {
-    marginTop:"8px",
+    marginTop: "8px",
     height: "414px",
     overflow: "auto !important",
   },
@@ -47,32 +47,38 @@ const useStyles = makeStyles((theme) => ({
       // border: "2px solid "+theme.palette.primary.light
     },
   },
-  tableHeader:{
-    "& th":{
-      backgroundColor:"#F5F7FA",
-      padding:"12px 10px",
-      marginBottom:"10px",
-     border:0,
-     color:"#4E5A6B",
-     font: 'normal normal 600 12px/16px NunitoSans-Regular',
-      },"& th:first-child":{
-        borderRadius:"10px 0 0 10px"
-        },
-        "& th:last-child":{
-          borderRadius:"0 10px 10px 0"
-          },
+  tableHeader: {
+    "& th": {
+      backgroundColor: "#F5F7FA",
+      padding: "12px 10px",
+      marginBottom: "10px",
+      border: 0,
+      color: "#4E5A6B",
+      font: "normal normal 600 12px/16px NunitoSans-Regular",
+    },
+    "& th:first-child": {
+      borderRadius: "10px 0 0 10px",
+    },
+    "& th:last-child": {
+      borderRadius: "0 10px 10px 0",
+    },
   },
-  tableRow:{
+  tableRow: {
     "& td, th": {
       padding: "14px",
       color: "#091B29",
-      letterSpacing: '0.29px',
+      letterSpacing: "0.29px",
     },
-    "& td p":{
-      font: 'normal normal 600 16px/16px NunitoSans-SemiBold',
+    "& td p": {
+      font: "normal normal 600 16px/16px NunitoSans-SemiBold",
       // fontWeignt:"600"
-      }
-  }
+    },
+  },
+  speedDial: {
+    position: "fixed !important",
+    bottom: "20px",
+    right: "20px",
+  },
 }));
 
 export { useStyles };

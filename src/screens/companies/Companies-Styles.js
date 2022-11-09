@@ -1,5 +1,4 @@
 import makeStyles from "@mui/styles/makeStyles";
-import { display, textTransform } from "@mui/system";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -10,7 +9,14 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "8px",
     boxShadow: "0px 3px 3px #5C86CB2E",
     padding: "14px",
-    height: "264px",
+    minHeight: "264px",
+  },
+  cards: {
+    margin: "18px 0",
+    borderRadius: "8px",
+    boxShadow: "0px 3px 3px #5C86CB2E",
+    padding: "14px",
+    minHeight: "264px",
   },
   propertyImg: {
     display: "flex",
@@ -30,19 +36,132 @@ const useStyles = makeStyles((theme) => ({
     height: "60px",
   },
   uploadBtn: {
-   
     "&.MuiButton-root": {
       color: "#071741",
       border: "1px solid #E4E8EE",
       font: "normal normal 600 12px/16px NunitoSans-Regular",
       textTransform: "capitalize",
       padding: "6px",
-      display:"flex",
-      margin:"auto",
-      
+      display: "flex",
+      margin: "auto",
     },
-     "&.MuiButton-root:hover": {
-      opacity:"0.80"
+    "&.MuiButton-root:hover": {
+      opacity: "0.80",
+    },
+  },
+  box: {
+    borderRadius: "12px",
+    border: "1px solid #E4E8EE",
+    // padding:"2px 8px",
+    // padding:"12px",
+    "& div": {
+      border: "0 !important",
+      margin: "0",
+      padding: "4px 8px",
+    },
+    "& textarea": {
+      border: "0 !important",
+      outline: "0 !important",
+      padding: "7px 0px",
+      font: "normal normal 600 14px/19px NunitoSans-Bold !important",
+    },
+  },
+  label: {
+    font: "normal normal 600 11px/16px NunitoSans-Regular !important",
+    letterSpacing: "0.05rem",
+    color: theme.palette.background.gray + " !important",
+    marginBottom: "7px",
+    marginTop: "8px",
+  },
+  toggleBtn: {
+    "& .MuiToggleButton-root": {
+      backgroundColor: theme.palette.background.white,
+      borderRadius: "10px !important",
+      border: "1px solid " + theme.palette.background.lightGray + "! important",
+      padding: "7px 16px",
+      margin: "0 10px",
+      textTransform: "capitalize",
+      color: theme.palette.primary.dark,
+      font: "normal normal bold 14px/19px NunitoSans-Bold",
+    },
+    "& .MuiToggleButton-root.Mui-selected": {
+      border: "1px solid " + theme.palette.primary.light + "! important",
+      background: theme.palette.primary.light,
+      color: theme.palette.background.white,
+    },
+    "& .MuiToggleButton-root:hover": {
+      backgroundColor: theme.palette.background.gray + " !important",
+      opacity: "0.90",
+      color: theme.palette.background.white,
+      border: "1px solid " + theme.palette.background.gray + "! important",
+    },
+  },
+  toggleCheck: {
+    "& .MuiToggleButton-root": {
+      backgroundColor: theme.palette.background.white,
+      borderRadius: "50% !important",
+      border: "2px solid " + theme.palette.background.lightGray + "! important",
+      padding: "2px",
+      marginTop: "7px",
+      textTransform: "capitalize",
+      color: theme.palette.primary.dark,
+      font: "normal normal bold 10px/19px NunitoSans-Bold",
+    },
+    "& .MuiToggleButton-root.Mui-selected": {
+      border: "2px solid " + theme.palette.primary.light + "! important",
+      background: theme.palette.primary.light,
+      color: theme.palette.background.white,
+    },
+    "& .MuiToggleButton-root:hover": {
+      backgroundColor: theme.palette.background.gray + " !important",
+      opacity: "0.90",
+      color: theme.palette.background.white,
+      border: "2px solid " + theme.palette.background.gray  + "! important",
+    },
+  },
+  contactCard: {
+    margin: "18px 0",
+    borderRadius: "8px",
+    boxShadow: "0px 3px 3px #5C86CB2E",
+    padding: "14px",
+  },
+  endCard: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+  },
+  saveBtn: {
+    "& .MuiButton-root": {
+      backgroundColor: theme.palette.primary.light,
+      borderRadius: "8px",
+      padding: "8px 0",
+      margin: "0 10px",
+    },
+    "& .MuiButton-outlined": {
+      backgroundColor: theme.palette.background.white,
+      textTransform: "capitalize",
+      font: "normal normal bold 14px/19px NunitoSans-Bold",
+    },
+    "& .MuiButton-root:hover": {
+      // backgroundColor:"inherit",
+      opacity: "0.90",
+    },
+    "& .MuiButton-text": {
+      color: theme.palette.background.white,
+    },
+    "& .MuiButton-contained": {
+      color: theme.palette.background.white,
+      font: "normal normal bold 14px/19px NunitoSans-Bold",
+      textTransform: "capitalize",
+    },
+  },
+  innnerSelect: {
+    "& .MuiSelect-select": {
+      // border: "none",
+      // borderRight: "1px solid #E4E8EE",
+      borderRadius: "10px",
+      padding: "8px 6px !important",
+      color: theme.palette.secondary.light + " !important",
     },
   },
 }));
