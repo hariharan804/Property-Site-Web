@@ -1,4 +1,4 @@
-import { useStyles } from "./Sidebar-Styles";
+import { useStyles } from "./styles";
 import { styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import MuiDrawer from "@mui/material/Drawer";
@@ -16,7 +16,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import Leads from "../../assets/images/Leads.svg";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { useNavigate } from "react-router-dom";
-import HomeWorkIcon from '@mui/icons-material/HomeWork';
+import HomeWorkIcon from "@mui/icons-material/HomeWork";
 
 const drawerWidth = 271;
 
@@ -98,9 +98,9 @@ export const Sidebar = (props) => {
       <aside className={classes.root}>
         <Drawer variant="permanent" open={open}>
           <DrawerHeader>
-            <Typography color="#fff">
+            <Typography color="#fff" component="h6">
               Property Manager For <br />
-              Start up{" "}
+              Start up
             </Typography>
             <IconButton
               classes={{ root: classes.drawerBtn }}

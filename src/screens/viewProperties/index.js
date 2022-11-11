@@ -9,9 +9,9 @@ import {
 } from "@mui/material";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { Card } from "@material-ui/core";
-import { useStyles } from "./ViewProperties-Styles";
+import { useStyles } from "./styles";
 import { useNavigate } from "react-router-dom";
-import GoogleMap from "../../components/googleMap/GoogleMap";
+import GoogleMap from "../../components/googleMap";
 import { LocationOn, Phone } from "@material-ui/icons";
 
 export const ViewProperties = (props) => {
@@ -52,13 +52,12 @@ export const ViewProperties = (props) => {
     {
       label: "Carpet Area",
       value: "10000",
-      type:" Sq.ft"
+      type: " Sq.ft",
     },
     {
       label: "Total Area",
       value: "1610000",
-      type:" Sq.ft"
-      
+      type: " Sq.ft",
     },
     {
       label: "Year Built",
@@ -98,7 +97,9 @@ export const ViewProperties = (props) => {
             </IconButton>
           </ListItem>
           <ListItem>
-            <Typography variant="h6">Rubix Appartment</Typography>
+            <Typography variant="h6" component="h6">
+              Rubix Appartment
+            </Typography>
           </ListItem>
         </Stack>
       </Card>
@@ -118,7 +119,12 @@ export const ViewProperties = (props) => {
                   src={require("../../assets/images/RubixAppartment.png")}
                 />
                 <div className={classes.positionRelative}>
-                  <Typography className={classes.id} color="#fff">
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    className={classes.id}
+                    color="#fff"
+                  >
                     ID-PGUR794
                   </Typography>
                 </div>
@@ -144,7 +150,9 @@ export const ViewProperties = (props) => {
                       >
                         {property.label}
                       </InputLabel>
-                      <Typography variant="h6">{property.value}</Typography>
+                      <Typography component="h6" variant="h6">
+                        {property.value}
+                      </Typography>
                     </Grid>
                   ))}
                   <Grid item sm={12} md={12} lg={12}>
@@ -155,7 +163,7 @@ export const ViewProperties = (props) => {
                     >
                       {"Property Description"}
                     </InputLabel>
-                    <Typography variant="h6">
+                    <Typography variant="h6" component="h6">
                       {
                         "A while back I needed to count the amount of letters that a piece of text in an email template had (to avoid passing any character limits). Unfortunately, a street bike available at a starting price of Rs. 1,62,916 in India. It is available in 3 variants and 8 colours with top variant price starting from The Yamaha"
                       }
@@ -177,7 +185,10 @@ export const ViewProperties = (props) => {
                     >
                       {property.label}
                     </InputLabel>
-                    <Typography variant="h6">{property.value}<span className={classes.smName}>{property?.type}</span></Typography>
+                    <Typography component="h6" variant="h6">
+                      {property.value}
+                      <span className={classes.smName}>{property?.type}</span>
+                    </Typography>
                   </div>
                 </Grid>
               ))}
@@ -188,12 +199,15 @@ export const ViewProperties = (props) => {
               <Grid item xs={10} sm={12} md={12} lg={4}>
                 <GoogleMap
                   style={{ maxHeight: "210px", maxWidth: "400px" }}
-                  lat="27.2046" lng="77.4977"
+                  lat="27.2046"
+                  lng="77.4977"
                 />
               </Grid>
               <Grid item xs={10} sm={12} md={12} lg={3}>
                 <Card className={classes.borderCard}>
                   <Typography
+                    component="h6"
+                    variant="body1"
                     sx={{
                       font: "normal normal bold 14px/16px NunitoSans-Bold",
                     }}
@@ -201,62 +215,79 @@ export const ViewProperties = (props) => {
                     <LocationOn fontSize="small" />
                     ADDRESS
                   </Typography>
-                  <Typography sx={{ fontWeight: "bold", margin: "9px 0 17px 0" }}>
+                  <Typography
+                    component="h6"
+                    sx={{ fontWeight: "bold", margin: "9px 0 17px 0" }}
+                  >
                     23 Main Street, 3rd Cross street, 3rd Sector, Chennai,
                     Tamilnadu, India -60001
                   </Typography>
-                  <Typography className={classes.lableText}><span>Latitude :</span> 27.2046° N</Typography>
-                  <Typography className={classes.lableText}><span>Longitude :</span> 77.4977° E</Typography>
+                  <Typography component="h6" className={classes.lableText}>
+                    <span>Latitude :</span> 27.2046° N
+                  </Typography>
+                  <Typography component="h6" className={classes.lableText}>
+                    <span>Longitude :</span> 77.4977° E
+                  </Typography>
                 </Card>
               </Grid>
               <Grid item xs={10} sm={12} md={12} lg={5}>
                 <Card className={classes.borderCard}>
                   <Typography
+                    component="h6"
                     sx={{
                       font: "normal normal bold 14px/16px NunitoSans-Bold",
-                      margin: "1px 0 17px 0" 
+                      margin: "1px 0 17px 0",
                     }}
                   >
                     <Phone fontSize="small" />
                     CONTACT & OTHER INFORMATION
                   </Typography>
-                  
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={12} md={12} lg={6}>
-                    <InputLabel
+                      <InputLabel
                         className={classes.label}
                         variant="standard"
                         htmlFor="Property-Description"
-                      >Business Phone :
+                      >
+                        Business Phone :
                       </InputLabel>
                       <Typography variant="h6">044 23224944</Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={6}>
-                    <InputLabel
+                      <InputLabel
                         className={classes.label}
                         variant="standard"
                         htmlFor="Property-Description"
-                      >Mobile Phone :
+                      >
+                        Mobile Phone :
                       </InputLabel>
-                      <Typography variant="h6">044 23224944</Typography>
+                      <Typography component="h6" variant="h6">
+                        044 23224944
+                      </Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={6}>
-                    <InputLabel
+                      <InputLabel
                         className={classes.label}
                         variant="standard"
                         htmlFor="Property-Description"
-                      >Website :
+                      >
+                        Website :
                       </InputLabel>
-                      <Typography variant="h6">propertyautomate.com</Typography>
+                      <Typography component="h6" variant="h6">
+                        propertyautomate.com
+                      </Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={6}>
-                    <InputLabel
+                      <InputLabel
                         className={classes.label}
                         variant="standard"
                         htmlFor="Property-Description"
-                      >Email Address :
+                      >
+                        Email Address :
                       </InputLabel>
-                      <Typography variant="h6">mail@propertyautomate.com</Typography>
+                      <Typography component="h6" variant="h6">
+                        mail@propertyautomate.com
+                      </Typography>
                     </Grid>
                   </Grid>
                 </Card>

@@ -32,8 +32,11 @@ const useStyles = makeStyles((theme) => ({
   propImg: {
     display: "flex",
     margin: "auto",
-    width: "60px",
-    height: "60px",
+    // width: "60px",
+    // height: "60px",
+    width: "141px",
+    height: "141px",
+    objectFit: "cover",
   },
   uploadBtn: {
     "&.MuiButton-root": {
@@ -57,13 +60,29 @@ const useStyles = makeStyles((theme) => ({
     "& div": {
       border: "0 !important",
       margin: "0",
-      padding: "4px 8px",
+      // padding: "4px 8px",
+    },
+    "& .ql-header": {
+      display: "none",
     },
     "& textarea": {
       border: "0 !important",
       outline: "0 !important",
       padding: "7px 0px",
       font: "normal normal 600 14px/19px NunitoSans-Bold !important",
+      "&:hover": {
+        border: "0 !important",
+      },
+    },
+    "& .quill": {
+      display: "flex",
+      flexDirection: "column-reverse",
+    },
+    "& .ql-toolbar": {
+      borderTop: "1px solid #E4E8EE !important",
+    },
+    "& .ql-toolbar.ql-snow, .ql-container.ql-snow": {
+      font: "normal normal 500 16px/19px NunitoSans-Regular !important",
     },
   },
   label: {
@@ -89,6 +108,12 @@ const useStyles = makeStyles((theme) => ({
       background: theme.palette.primary.light,
       color: theme.palette.background.white,
     },
+    "& .Mui-selected.MuiToggleButton-root:hover": {
+      background: theme.palette.primary.light + "! important",
+      opacity: "0.80",
+      color: theme.palette.background.white,
+      border: "1px solid " + theme.palette.primary.light + "! important",
+    },
     "& .MuiToggleButton-root:hover": {
       backgroundColor: theme.palette.background.gray + " !important",
       opacity: "0.90",
@@ -107,6 +132,12 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.primary.dark,
       font: "normal normal bold 10px/19px NunitoSans-Bold",
     },
+    "& .Mui-selected.MuiToggleButton-root:hover": {
+      background: theme.palette.primary.light + "! important",
+      opacity: "0.80",
+      color: theme.palette.background.white,
+      border: "2px solid " + theme.palette.primary.light + "! important",
+    },
     "& .MuiToggleButton-root.Mui-selected": {
       border: "2px solid " + theme.palette.primary.light + "! important",
       background: theme.palette.primary.light,
@@ -116,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.background.gray + " !important",
       opacity: "0.90",
       color: theme.palette.background.white,
-      border: "2px solid " + theme.palette.background.gray  + "! important",
+      border: "2px solid " + theme.palette.background.gray + "! important",
     },
   },
   contactCard: {
@@ -163,6 +194,18 @@ const useStyles = makeStyles((theme) => ({
       padding: "8px 6px !important",
       color: theme.palette.secondary.light + " !important",
     },
+  },
+  postionRelative: {
+    position: "relative",
+  },
+  uploadHidden: {
+    position: "absolute",
+    top: "-8px",
+    left: "-5px",
+    padding: "1px",
+    width: "110%",
+    height: "200%",
+    opacity: "0",
   },
 }));
 

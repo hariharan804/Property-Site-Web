@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     transform: "rotate(90deg)",
   },
   profileInfo: {
-    minWidth: "350px",
+    minWidth: "320px",
     maxWidth: "420px",
   },
   roleViewer: {

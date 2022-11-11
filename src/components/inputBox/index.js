@@ -1,7 +1,7 @@
 import { TextareaAutosize } from "@material-ui/core";
 import { InputAdornment, TextField } from "@mui/material";
 import { useTheme } from "@mui/styles";
-import { useStyles } from "./InputBox-Styles";
+import { useStyles } from "./styles";
 
 export const InputBox = (props) => {
   const classes = useStyles(props);
@@ -16,22 +16,40 @@ export const InputBox = (props) => {
     endAdornment,
     startAdornment,
     row,
-    onChangeFun
+    onChangeFun,
   } = props;
 
-  const inputOnFocused = {
-    "& .Mui-focused": {
-      color: theme.palette.secondary.dark + " !important",
-    },
-    "& .Mui-focused.MuiInput-root": {
-      border: "1px solid #5078E1",
-    },
-  };
+  // const inputOnFocused = {
+  //   "& .Mui-focused": {
+  //     color: theme.palette.secondary.dark + " !important",
+  //   },
+   
+  //   "& .Mui-focused": {
+  //     border: "1px solid #5078E1",
+  //   },
+  // };
   return (
     <div className={classes.inputBlock}>
-      {type !== "textArea" ? (
+      {
+      // type === "date" ? (
+      //   <MobileDatePicker
+      //     label="For mobile"
+      //     value={"value"}
+      //     // onChange={(newValue) => {
+      //     //   setValue(newValue);
+      //     // }}
+      //     renderInput={(params) => <TextField {...params} />}
+      //   />
+      // ) :
+       type !== "textArea" ? (
         <TextField
-          sx={(inputOnFocused, disabled && { opacity: 0.9 , "& div":{ background:theme.palette.background.lightGray}})}
+          sx={
+            (
+            disabled && {
+              opacity: 0.9,
+              "& div, div:hover": { background: theme.palette.background.lightGray, border:"none !important"},
+            })
+          }
           label={label}
           type={type}
           fullWidth={true}
@@ -57,8 +75,7 @@ export const InputBox = (props) => {
         />
       ) : (
         <TextareaAutosize
-          className={classes.input}
-          sx={inputOnFocused}
+          className={classes.input} 
           minRows={row}
           aria-label="maximum height"
           placeholder={placeholder}

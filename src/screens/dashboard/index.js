@@ -16,15 +16,15 @@ import {
   Typography,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import ChartCard from "../../components/chartCard/ChartCard";
+import ChartCard from "../../components/chartCard";
 import pencil from "../../assets/images/pencil.svg";
 import eye from "../../assets/images/eye.svg";
-import CountingProperty from "../../components/countingProperty/CountingProperty";
+import CountingProperty from "../../components/countingProperty";
 import { Stack } from "@mui/system";
 import { useState } from "react";
-import TabPanel from "../../components/tabPanel/TabPanel";
-import { useStyles } from "./Dashboard-Styles";
-import InputBox from "../../components/inputBox/InputBox";
+import TabPanel from "../../components/tabPanel";
+import { useStyles } from "./styles";
+import InputBox from "../../components/inputBox";
 import { useNavigate } from "react-router-dom";
 
 export const chartDetails = [
@@ -233,26 +233,36 @@ export const Dashboard = (props) => {
                   <ListItem sx={{ display: "block" }}>
                     <Typography
                       variant="h6"
+                      component="h6"
                       sx={{
                         font: "normal normal 600 14px/19px NunitoSans-SemiBold",
                       }}
                     >
                       General Requests
                     </Typography>
-                    <Typography variant="h6" sx={{ display: "block" }}>
+                    <Typography
+                      variant="h6"
+                      component="h5"
+                      sx={{ display: "block" }}
+                    >
                       12
                     </Typography>
                   </ListItem>
                   <ListItem sx={{ display: "block" }}>
                     <Typography
                       variant="h6"
+                      component="h5"
                       sx={{
                         font: "normal normal 600 14px/19px NunitoSans-SemiBold",
                       }}
                     >
                       Maintenance
                     </Typography>
-                    <Typography variant="h6" sx={{ display: "block" }}>
+                    <Typography
+                      variant="h6"
+                      component="h5"
+                      sx={{ display: "block" }}
+                    >
                       15
                     </Typography>
                   </ListItem>
@@ -270,7 +280,7 @@ export const Dashboard = (props) => {
                 <Grid sx={{ marginTop: "0px" }} container spacing={2}>
                   <Grid item xs={8}>
                     <ListItem sx={{ padding: "5px" }}>
-                      <Typography variant="h6">
+                      <Typography variant="h6" component="h5">
                         {toggleValue === 0
                           ? "General Requests (12)"
                           : "Maintenance (15)"}
@@ -281,7 +291,11 @@ export const Dashboard = (props) => {
                     <ListItem
                       sx={{ padding: "5px", justifyContent: "flex-end" }}
                     >
-                      <Typography variant="subTitel1" color="primary.light">
+                      <Typography
+                        variant="subTitel1"
+                        component="h5"
+                        color="primary.light"
+                      >
                         View All
                       </Typography>
                     </ListItem>
@@ -315,15 +329,19 @@ export const Dashboard = (props) => {
                               <Typography variant="h6" color="#091B29">
                                 {row.name}
                               </Typography>
-                              <Typography color="#98A0AC">
+                              <Typography
+                                variant="body1"
+                                color="#98A0AC"
+                                component="h5"
+                              >
                                 General Requests &#8226; {row.date} &#8226;{" "}
                                 {row.id}
                               </Typography>
                             </TableCell>
-                            <TableCell sx={{ width: "40px" }} >
+                            <TableCell sx={{ width: "40px" }}>
                               <img src={pencil} alt="pencil" />
                             </TableCell>
-                            <TableCell sx={{ width: "40px" }} >
+                            <TableCell sx={{ width: "40px" }}>
                               <img src={eye} alt="pencil" />
                             </TableCell>
                           </TableRow>
@@ -344,17 +362,25 @@ export const Dashboard = (props) => {
                             }}
                           >
                             <TableCell component="th" scope="row">
-                              <Typography variant="h6" color="#091B29">
+                              <Typography
+                                variant="h6"
+                                component="p"
+                                color="#091B29"
+                              >
                                 {row.name}
                               </Typography>
-                              <Typography color="#98A0AC">
+                              <Typography
+                                color="#98A0AC"
+                                variant="body"
+                                component="p"
+                              >
                                 {row.type} &#8226; {row.date} &#8226; {row.id}
                               </Typography>
                             </TableCell>
-                            <TableCell sx={{ width: "40px" }} >
+                            <TableCell sx={{ width: "40px" }}>
                               <img src={pencil} alt="pencil" />
                             </TableCell>
-                            <TableCell sx={{ width: "40px" }} >
+                            <TableCell sx={{ width: "40px" }}>
                               <img src={eye} alt="pencil" />
                             </TableCell>
                           </TableRow>
@@ -367,7 +393,11 @@ export const Dashboard = (props) => {
             </Grid>
             <Grid item xs={10} md={12} lg={6}>
               <Card className={classes.cards} variant="outlined">
-                <Typography variant="h6" sx={{ marginBottom: "12px" }}>
+                <Typography
+                  variant="h6"
+                  component="h5"
+                  sx={{ marginBottom: "12px" }}
+                >
                   Occupancy By Property
                 </Typography>
                 <TableContainer className={classes.tableContainer2}>
@@ -375,29 +405,39 @@ export const Dashboard = (props) => {
                     <TableHead className={classes.tableHeader}>
                       <TableRow>
                         <TableCell>Property ID</TableCell>
-                        <TableCell >Property Name</TableCell>
-                        <TableCell >Total Unit</TableCell>
-                        <TableCell >Occupeid Unit</TableCell>
-                        <TableCell >Occupancy&nbsp;%</TableCell>
+                        <TableCell>Property Name</TableCell>
+                        <TableCell>Total Unit</TableCell>
+                        <TableCell>Occupeid Unit</TableCell>
+                        <TableCell>Occupancy&nbsp;%</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {table.map((row, index) => (
                         <TableRow className={classes.tableRow} key={index}>
                           <TableCell scope="row">
-                            <Typography>{row.propertyId}</Typography>
+                            <Typography variant="body1" component="p">
+                              {row.propertyId}
+                            </Typography>
                           </TableCell>
-                          <TableCell >
-                            <Typography>{row.propertyName}</Typography>
+                          <TableCell>
+                            <Typography variant="body1" component="p">
+                              {row.propertyName}
+                            </Typography>
                           </TableCell>
-                          <TableCell >
-                            <Typography>{row.totelUnit}</Typography>
+                          <TableCell>
+                            <Typography variant="body1" component="p">
+                              {row.totelUnit}
+                            </Typography>
                           </TableCell>
-                          <TableCell >
-                            <Typography>{row.occupeidUnit}</Typography>
+                          <TableCell>
+                            <Typography variant="body1" component="p">
+                              {row.occupeidUnit}
+                            </Typography>
                           </TableCell>
-                          <TableCell >
-                            <Typography>{row.occupancy}</Typography>
+                          <TableCell>
+                            <Typography variant="body1" component="p">
+                              {row.occupancy}
+                            </Typography>
                           </TableCell>
                         </TableRow>
                       ))}

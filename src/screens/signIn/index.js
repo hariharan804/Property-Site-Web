@@ -1,15 +1,15 @@
 // import { useTheme } from "@mui/styles";
-import { Button, Grid } from "@mui/material";
-import { useStyles } from "./SignIn-Styels";
+import { Button, Grid, Typography } from "@mui/material";
+import { useStyles } from "./styles";
 import dotedImg from "../../assets/images/doted.svg";
 import circleImg from "../../assets/images/circle.svg";
 import circleDarkImg from "../../assets/images/circleDark.svg";
-import InputBox from "../../components/inputBox/InputBox";
+import InputBox from "../../components/inputBox";
 import eyeHide from "../../assets/images/eye-hide.svg";
 import eye from "../../assets/images/eye.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Alert from "../../components/alert/Alert";
+import Alert from "../../components/alert";
 
 export const SignIn = (props) => {
   const classes = useStyles(props);
@@ -106,7 +106,7 @@ export const SignIn = (props) => {
                   />
                 </div>
                 <div className={classes.signInCard}>
-                  <h1 className={classes.signTitle}>Sign In</h1>
+                  <Typography variant="h5" component="h1"  className={classes.signTitle}>Sign In</Typography>
                   <div className={classes.inputBar}>
                     <InputBox
                       type="text"
@@ -114,7 +114,7 @@ export const SignIn = (props) => {
                       placeholder="Enter Mobile Number / Email ID"
                       onChangeFun={onChangeMail}
                     />
-                  </div>{" "}
+                  </div>
                   <div className={classes.inputBar}>
                     <InputBox
                       type={viewPassword ? "text" : "password"}
@@ -135,15 +135,15 @@ export const SignIn = (props) => {
                       }
                     />
                   </div>
-                  <h5 className={classes.forgetPassword}>
+                  <Typography variant="body3" component="h6" align="right" className={classes.forgetPassword}>
                     Did you forget your password? <span>Click Here</span>
-                  </h5>
+                  </Typography>
                   <div className={classes.poweredBy}>
-                    <span>Powered by</span>{" "}
+                    <span>Powered by</span>
                     <img
                       src={require("../../assets/images/logo.png")}
                       alt="logo"
-                    />{" "}
+                    />
                     Property Automate
                   </div>
                   <Button

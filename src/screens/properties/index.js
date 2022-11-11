@@ -16,8 +16,8 @@ import {
 } from "@mui/material";
 import { Card } from "@material-ui/core";
 import SearchIcon from "@mui/icons-material/Search";
-import { useStyles } from "./Properties-Styles";
-import InputBox from "../../components/inputBox/InputBox";
+import { useStyles } from "./styles";
+import InputBox from "../../components/inputBox";
 import filter from "../../assets/images/filter.svg";
 import { useNavigate } from "react-router-dom";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -160,7 +160,9 @@ export const Properties = (props) => {
       <Card className={classes.card}>
         <Stack direction="row">
           <ListItem>
-            <Typography variant="h6">Properties</Typography>
+            <Typography component="h1" variant="h6">
+              Properties
+            </Typography>
           </ListItem>
         </Stack>
       </Card>
@@ -204,26 +206,42 @@ export const Properties = (props) => {
                   {table.map((row, index) => (
                     <TableRow className={classes.tableRow} key={index}>
                       <TableCell scope="row">
-                        <Typography onClick={() => navigate("/user/view-property")}>
+                        <Typography
+                          variant="body1"
+                          component="p"
+                          onClick={() => navigate("/user/view-property")}
+                        >
                           {row.propertyId}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography onClick={() => navigate("/user/view-property")}>
+                        <Typography
+                          variant="body1"
+                          component="p"
+                          onClick={() => navigate("/user/view-property")}
+                        >
                           {row.propertyName}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography>{row.companyName}</Typography>
+                        <Typography variant="body1" component="p">
+                          {row.companyName}
+                        </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography>{row.location}</Typography>
+                        <Typography variant="body1" component="p">
+                          {row.location}
+                        </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography>{row.revanueType}</Typography>
+                        <Typography variant="body1" component="p">
+                          {row.revanueType}
+                        </Typography>
                       </TableCell>
                       <TableCell align="center">
                         <Typography
+                          variant="body1"
+                          component="p"
                           sx={{
                             backgroundColor: "#78B1FE",
                             padding: "5px",
@@ -236,6 +254,8 @@ export const Properties = (props) => {
                       </TableCell>
                       <TableCell>
                         <Typography
+                          variant="body1"
+                          component="p"
                           sx={{
                             color:
                               row.status === "Active" ? "#5AC782" : "#FF4B4B",

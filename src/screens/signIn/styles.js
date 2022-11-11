@@ -95,8 +95,8 @@ const useStyles = makeStyles((theme) => ({
   inputBar: {
     marginTop: "27px",
   },
-  forgetPassword: {
-    textAlign: "right",
+  forgetPassword: { 
+    // textAlign: "right !important",
     color: theme.palette.secondary.dark,
     marginTop:"5px",
     marginBottom:"20px",

@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   cardImg: {
     width: "32px",
     height: "32px",
-    
   },
 }));
 
@@ -28,9 +27,11 @@ export const CountingProperty = (props) => {
       <Card className={classes.cards} variant="outlined">
         <Stack direction="row" spacing={1}>
           <ListItem sx={{ padding: "5px" }}>
-            <Typography variant="h4">{counting}</Typography>
+            <Typography variant="h4" component="h4">
+              {counting}
+            </Typography>
           </ListItem>
-          <ListItem sx={{ padding: "5px", justifyContent: 'flex-end'}} >
+          <ListItem sx={{ padding: "5px", justifyContent: "flex-end" }}>
             <img
               className={classes.cardImg}
               src={require(`../../assets/images/card/${image}.png`)}
@@ -46,6 +47,7 @@ export const CountingProperty = (props) => {
             marginTop: "12px",
           }}
           variant="subtitle1"
+          component="p"
         >
           {propertyName}
         </Typography>

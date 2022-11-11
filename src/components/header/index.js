@@ -12,7 +12,7 @@ import {
   Menu,
   Typography,
 } from "@mui/material";
-import { useStyles } from "./Header-Styles";
+import { useStyles } from "./styles";
 import bellIcon from "../../assets/images/bell-icon.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -61,7 +61,7 @@ export const Header = () => {
       <header className={classes.root}>
         <Grid
           container
-          sx={{ marginTop: 0, paddingTop: 0, width:"100%" }}
+          sx={{ marginTop: 0, paddingTop: 0, width: "100%" }}
           direction="row"
           justifyContent="space-between"
           alignItems="center"
@@ -86,6 +86,8 @@ export const Header = () => {
                     display: { xs: "none", md: "inherit", lg: "inherit" },
                   }}
                   className={classes.siteName}
+                  component="h6"
+                  variant="subtitel"
                 >
                   PROPERTY MANAGEMENT SOLUTION
                 </Typography>
@@ -212,14 +214,15 @@ export const Header = () => {
             <Box className={classes.roleBox}>
               <Typography
                 variant="h6"
+                component="h6"
                 sx={{ fontSize: "12px" }}
                 color={"#98A0AC"}
               >
                 ROLES
               </Typography>
-              <Grid container spacing={1} >
+              <Grid container spacing={1}>
                 {roleDetails.map((roles, index) => (
-                  <Grid key={index} item xs={"auto"}  lg={"auto"}>
+                  <Grid key={index} item xs={"auto"} lg={"auto"}>
                     <Card
                       className={classes.roleCard}
                       sx={{ border: "1px sold #f6e !important" }}
@@ -244,7 +247,12 @@ export const Header = () => {
                         >
                           {roles.role.charAt(0)}
                         </Avatar>
-                        <Typography sx={{ marginTop: "6px" }} align="center">
+                        <Typography
+                          sx={{ marginTop: "6px" }}
+                          align="center"
+                          component="h6"
+                          variant="h6"
+                        >
                           {roles.role}
                         </Typography>
                       </Box>
@@ -259,11 +267,13 @@ export const Header = () => {
                 variant="h6"
                 sx={{ fontSize: "14px", marginTop: "8px" }}
                 color={"#4E5A6B"}
+                component="h6"
               >
                 My Profile
               </Typography>
               <Typography
                 variant="h6"
+                component="h6"
                 sx={{ fontSize: "14px", marginTop: "8px" }}
                 color={"#4E5A6B"}
               >
@@ -271,16 +281,14 @@ export const Header = () => {
               </Typography>
               <Typography
                 variant="h6"
+                component="h6"
                 sx={{ fontSize: "14px", marginTop: "8px" }}
                 color={"#4E5A6B"}
               >
                 Terms and conditions
               </Typography>
               <Box className={classes.saveBtn}>
-                <Button
-                  onClick={() => navigate("/")}
-                  variant="outlined"
-                >
+                <Button onClick={() => navigate("/")} variant="outlined">
                   Sign Out
                 </Button>
               </Box>

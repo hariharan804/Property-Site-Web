@@ -2,6 +2,7 @@ import Snackbar from "@mui/material/Snackbar";
 import { useEffect, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Alert } from "@mui/material";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   alert: {
@@ -33,7 +34,16 @@ export default function SimpleSnackbar(props) {
   };
 
   return (
-    <div className={classes.alert}>
+    <Box
+      className={classes.alert}
+      sx={
+        (status === "error" && {
+          "& .MuiPaper-root": {
+            backgroundColor: "#FF4B4B !important",
+          },
+        })
+      }
+    >
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         open={open}
@@ -41,9 +51,9 @@ export default function SimpleSnackbar(props) {
         onClose={handleClose}
       >
         <Alert onClose={handleClose} severity={status} sx={{ width: "100%" }}>
-         {text}
+          {text}
         </Alert>
       </Snackbar>
-    </div>
+    </Box>
   );
 }

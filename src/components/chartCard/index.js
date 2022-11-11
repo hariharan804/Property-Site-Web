@@ -1,4 +1,4 @@
-import { Box, Card, Grid, ListItem,  Typography } from "@mui/material";
+import { Box, Card, Grid, ListItem, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Chart } from "react-google-charts";
 
@@ -38,7 +38,9 @@ export const ChartCard = (props) => {
         <Grid container spacing={2}>
           <Grid item xs={10}>
             <ListItem sx={{ padding: "5px" }}>
-              <Typography variant="h6">{name}</Typography>
+              <Typography variant="h6" component="h6">
+                {name}
+              </Typography>
             </ListItem>
           </Grid>
           <Grid item xs={2}>
@@ -55,8 +57,8 @@ export const ChartCard = (props) => {
           chartType={chartType}
           options={option}
           data={data}
-            width={"100%"}
-            height={"100%"}
+          width={"100%"}
+          height={"100%"}
         />
       </Card>
     </Box>

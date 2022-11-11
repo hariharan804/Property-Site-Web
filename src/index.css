@@ -55,3 +55,11 @@ color: #98A0AC;
 ::-webkit-scrollbar{
   width: 0 !important;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  display: block;
+  background: url("./assets/images/dateSchedule.svg") no-repeat;
+  width: 20px;
+  height: 20px;
+}

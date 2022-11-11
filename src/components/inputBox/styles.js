@@ -6,11 +6,15 @@ const useStyles = makeStyles((theme) => ({
   },
  
   input: {
-    font: "normal normal 600 16px/19px NunitoSans-SemiBold !important",
+    font: "normal normal 600 16px/19px NunitoSans-Bold !important",
     border: "1px solid #E4E8EE",
     borderRadius: "10px",
     padding: "3px 6px",
     color: theme.palette.secondary.light+' !important',
+    "&:hover":{
+      border: "1px solid #5078E1 !important",
+    },
+    
   },
 
   label: {

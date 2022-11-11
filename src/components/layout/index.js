@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Header from "../header/Header";
-import { useStyles } from "./layout-styles";
-import Sidebar from "../sidebar/Sidebar";
+import Header from "../header";
+import { useStyles } from "./styles";
+import Sidebar from "../sidebar";
 
 export const Layout = () => {
   const classes = useStyles();
